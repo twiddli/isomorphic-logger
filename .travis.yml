@@ -1,0 +1,26 @@
+language: node_js
+node_js: 8
+env:
+  global:
+    - GIT_NAME=Travis-CI
+    - GIT_EMAIL=travis-ci@grabr.io
+    - GITHUB_REPO=Grabr/isomorphic-logger.git
+before_install:
+  - npm i -g makeshift
+  - makeshift -s $NPM_ORG -r registry.npmjs.org
+install:
+  - npm i
+  - npm run build
+  - npm run babel-flow
+  - npm run flow
+before_deploy:
+  - git config --global user.name $GIT_NAME
+  - git config --global user.email $GIT_EMAIL
+  - git remote set-url origin https://$GITHUB_TOKEN@github.com/$GITHUB_REPO
+deploy:
+  on:
+    all_branches: true
+  api_key: $NPM_TOKEN
+  skip_cleanup: true
+  provider: script
+  script: bash ./deploy.sh

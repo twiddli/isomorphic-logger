@@ -1,0 +1,65 @@
+{
+  "name": "@grabrinc/isomorphic-logger",
+  "version": "0.1.60",
+  "author": "Savva Mikhalevski <smikhalevski@gmail.com>",
+  "description": "Isomorphic logger",
+  "keywords": [
+    "logger",
+    "node",
+    "clent",
+    "web",
+    "isomorphic",
+    "universal",
+    "rolling",
+    "react",
+    "native",
+    "file",
+    "debug"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Grabr/isomorphic-logger.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Grabr/isomorphic-logger/issues"
+  },
+  "main": "dist/index.js",
+  "homepage": "https://github.com/Grabr/isomorphic-logger",
+  "scripts": {
+    "build": "rm -rf target/out && cross-env NODE_ENV=production babel src/main -d target/out",
+    "test": "NODE_ENV=test jest --colors",
+    "babel-flow": "rm -rf target/flow; BABEL_ENV=flow babel src -d target/flow",
+    "flow": "flow",
+    "flow-watch": "rm -rf target/flow; BABEL_ENV=flow babel src -d target/flow --watch & PID=$!; sleep 5; flow-watch; kill -9 $PID"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "<rootDir>/target/",
+      "<rootDir>/node_modules/"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.3",
+    "@babel/core": "^7.17.4",
+    "@babel/plugin-transform-regenerator": "7.16.7",
+    "@babel/plugin-transform-runtime": "7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-flow": "^7.16.7",
+    "@babel/preset-stage-0": "^7.8.3",
+    "@babel/runtime": "^7.17.2",
+    "babel-jest": "^27.5.1",
+    "cross-env": "^7.0.3",
+    "flow-bin": "^0.171.0",
+    "flow-watch": "^2.0.0",
+    "jest": "^27.5.1",
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "moment": "2.29.1",
+    "object-inspect": "^1.12.0",
+    "safe-json-stringify": "^1.2.0",
+    "stacktrace-js": "^2.0.2",
+    "wolfy87-eventemitter": "^5.2.9"
+  }
+}
